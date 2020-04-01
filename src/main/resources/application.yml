@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+
+
+log4j:
+  category:
+    org:
+      springframework:
+        data:
+          mongodb: DEBUG
+  appender:
+    stdout:
+      layout:
+        ConversionPattern: %d{ABSOLUTE} %5p %40.40c:%4L - %m%n
+
