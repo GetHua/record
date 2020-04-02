@@ -1,7 +1,6 @@
 package com.fern.record.entity;
 
 import lombok.Data;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,24 +10,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 /**
- * 用户表
+ * 项目
  */
 @Document
 @Data
-public class User {
+public class Item {
 
     @Id
     private Long id;
 
-    private String username;
-    private String nickname;
-    private String headImg;
-    private String password;
+    private String name;
 
     /**
      * @see com.fern.record.type.StatusEnum
      */
     private String state;
+
     @Version
     private Integer version;
     @CreatedDate

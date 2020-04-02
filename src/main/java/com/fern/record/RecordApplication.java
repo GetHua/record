@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class RecordApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(new Class[]{RecordApplication.class, AppConfig.class}, args);
+        SpringApplication.run(new Class[]{RecordApplication.class}, args);
     }
 
 }
