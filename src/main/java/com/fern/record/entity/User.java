@@ -25,6 +25,8 @@ public class User {
     private String headImg;
     private String password;
 
+    private Long groupId;
+
     /**
      * @see com.fern.record.type.StatusEnum
      */

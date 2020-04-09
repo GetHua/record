@@ -16,10 +16,7 @@ public class UserGroup {
     @Id
     private Long id;
 
-    private String username;
-    private String nickname;
-    private String headImg;
-    private String password;
+    private String name;
 
     /**
      * @see com.fern.record.type.StatusEnum

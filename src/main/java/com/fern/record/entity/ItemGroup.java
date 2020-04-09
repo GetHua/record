@@ -10,18 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 /**
- * 项目
+ * 项目组
  */
 @Document
 @Data
-public class Item {
+public class ItemGroup {
 
     @Id
     private Long id;
 
     private String name;
-
-    private Long itemGroupId;
 
     /**
      * @see com.fern.record.type.StatusEnum

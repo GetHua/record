@@ -10,18 +10,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 /**
- * 项目
+ * 玩家每日数据
  */
 @Document
 @Data
-public class Item {
+public class PlayerRecord {
 
     @Id
     private Long id;
 
-    private String name;
+    /** 项目id */
+    private Long itemId;
 
-    private Long itemGroupId;
+    /** 数据日期 */
+    private LocalDateTime data;
+
+    /** 玩家总数 */
+    private Long amount;
+
+    /** 认证总数 */
+    private Long authAmount;
+
+    /** 认证活跃总数 */
+    private Long authActiveAmount;
+
+    /** 支付总额 */
+    private Long paymentAmount;
 
     /**
      * @see com.fern.record.type.StatusEnum
@@ -34,4 +48,5 @@ public class Item {
     private LocalDateTime createDate;
     @LastModifiedDate
     private LocalDateTime updateDate;
+
 }
