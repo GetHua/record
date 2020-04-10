@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/userGroup")
 public class UserGroupController {
 
 
@@ -26,7 +28,7 @@ public class UserGroupController {
     }
 
     @GetMapping("/{id}")
-    public Mono<UserGroup> findById(@PathVariable Long id) {
+    public Mono<UserGroup> findById(@PathVariable String id) {
         return userGroupService.findById(id);
     }
 
@@ -36,7 +38,7 @@ public class UserGroupController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<UserGroup> delete(@PathVariable Long id) {
+    public Mono<UserGroup> delete(@PathVariable String id) {
         return userGroupService.deleteById(id);
     }
 

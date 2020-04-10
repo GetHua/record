@@ -7,23 +7,23 @@ import java.time.LocalDateTime;
 @Data
 public class PlayerRecordForm {
 
-    private Long id;
+    private String id;
 
     /** 项目id */
-    private Long itemId;
+    private String itemId;
 
     /** 数据日期 */
     private LocalDateTime data;
 
     /** 玩家总数 */
-    private Long amount;
+    private String amount;
 
     /** 认证总数 */
-    private Long authAmount;
+    private String authAmount;
 
     /** 认证活跃总数 */
-    private Long authActiveAmount;
+    private String authActiveAmount;
 
     /** 支付总额 */
-    private Long paymentAmount;
+    private String paymentAmount;
 }

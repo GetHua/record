@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class UserItemForm {
 
-    private Long id;
+    private String id;
 
-    private Long userId;
+    private String userId;
 
-    private Long itemId;
+    private String itemId;
 }

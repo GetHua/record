@@ -7,10 +7,10 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class ItemForm {
 
-    private Long id;
+    private String id;
 
     @NotEmpty
     private String name;
 
-    private Long itemGroupId;
+    private String itemGroupId;
 }

@@ -17,14 +17,14 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Repository
-public interface PlayerRecordRepository extends ReactiveMongoRepository<PlayerRecord, Long>, CustomizedPlayerRecordRepository {
+public interface PlayerRecordRepository extends ReactiveMongoRepository<PlayerRecord, String>, CustomizedPlayerRecordRepository {
 }
 
 interface CustomizedPlayerRecordRepository{
 
     Mono<Page<PlayerRecord>> findByPage(PageRequest page);
 
-    Mono<PlayerRecord> changeStateById(Long id, StatusEnum statusEnum);
+    Mono<PlayerRecord> changeStateById(String id, StatusEnum statusEnum);
 }
 
 class CustomizedPlayerRecordRepositoryImpl implements CustomizedPlayerRecordRepository {
@@ -45,7 +45,7 @@ class CustomizedPlayerRecordRepositoryImpl implements CustomizedPlayerRecordRepo
     }
 
     @Override
-    public Mono<PlayerRecord> changeStateById(Long id, StatusEnum statusEnum) {
+    public Mono<PlayerRecord> changeStateById(String id, StatusEnum statusEnum) {
         return reactiveMongoTemplate.findAndModify(
                 Query.query(Criteria.where("_id").is(id)),
                 Update.update("state", statusEnum.name()),

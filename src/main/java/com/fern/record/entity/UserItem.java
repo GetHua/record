@@ -26,11 +26,11 @@ import java.time.LocalDateTime;
 public class UserItem {
 
     @Id
-    private Long id;
+    private String id;
 
-    private Long userId;
+    private String userId;
 
-    private Long itemId;
+    private String itemId;
 
     /**
      * @see com.fern.record.type.StatusEnum

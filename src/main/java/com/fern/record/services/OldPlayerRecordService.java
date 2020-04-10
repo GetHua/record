@@ -25,7 +25,7 @@ public class OldPlayerRecordService {
         );
     }
 
-    public Mono<OldPlayerRecord> findById(Long id) {
+    public Mono<OldPlayerRecord> findById(String id) {
         return Mono.just(id)
                 .flatMap(oldPlayerRecordRepository::findById);
     }
@@ -40,11 +40,11 @@ public class OldPlayerRecordService {
                 });
     }
 
-    public Mono<OldPlayerRecord> deleteById(Long id) {
+    public Mono<OldPlayerRecord> deleteById(String id) {
         return changeStateById(id, StatusEnum.DELETED);
     }
 
-    private Mono<OldPlayerRecord> changeStateById(Long id, StatusEnum statusEnum) {
+    private Mono<OldPlayerRecord> changeStateById(String id, StatusEnum statusEnum) {
         return Mono.justOrEmpty(id)
                 .flatMap(itemId -> oldPlayerRecordRepository.changeStateById(id, statusEnum));
     }

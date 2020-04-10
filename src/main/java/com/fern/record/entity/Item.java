@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 public class Item {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 
-    private Long itemGroupId;
+    private String itemGroupId;
 
     /**
      * @see com.fern.record.type.StatusEnum

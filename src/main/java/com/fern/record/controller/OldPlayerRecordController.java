@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @RestController
+@RequestMapping("/oldPlayerRecord")
 public class OldPlayerRecordController {
 
 
@@ -21,22 +25,22 @@ public class OldPlayerRecordController {
     private OldPlayerRecordService oldPlayerRecordService;
 
     @GetMapping
-    public Mono<Page<OldPlayerRecord>> findAll(FindOldPlayerRecordForm form) {
+    public Mono<Page<OldPlayerRecord>> findAll(@Valid FindOldPlayerRecordForm form) {
         return oldPlayerRecordService.findAll(form);
     }
 
     @GetMapping("/{id}")
-    public Mono<OldPlayerRecord> findById(@PathVariable Long id) {
+    public Mono<OldPlayerRecord> findById(@PathVariable String id) {
         return oldPlayerRecordService.findById(id);
     }
 
     @PostMapping
-    public Mono<OldPlayerRecord> save(OldPlayerRecordForm form) {
+    public Mono<OldPlayerRecord> save(@Valid OldPlayerRecordForm form) {
         return oldPlayerRecordService.save(form);
     }
 
     @DeleteMapping("/{id}")
-    public Mono<OldPlayerRecord> delete(@PathVariable Long id) {
+    public Mono<OldPlayerRecord> delete(@PathVariable String id) {
         return oldPlayerRecordService.deleteById(id);
     }
 

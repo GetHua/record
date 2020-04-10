@@ -17,14 +17,14 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Repository
-public interface ItemRepository extends ReactiveMongoRepository<Item, Long>, CustomizedItemRepository {
+public interface ItemRepository extends ReactiveMongoRepository<Item, String>, CustomizedItemRepository {
 }
 
 interface CustomizedItemRepository{
 
     Mono<Page<Item>> findByPage(PageRequest page);
 
-    Mono<Item> changeStateById(Long id, StatusEnum statusEnum);
+    Mono<Item> changeStateById(String id, StatusEnum statusEnum);
 }
 
 class CustomizedItemRepositoryImpl implements CustomizedItemRepository {
@@ -41,11 +41,11 @@ class CustomizedItemRepositoryImpl implements CustomizedItemRepository {
 
     @Override
     public Mono<Page<Item>> findByPage(PageRequest page) {
-        return mongoPageAgent.findPage(page);
+        return mongoPageAgent.findPage(Query.query(Criteria.where("state").is(StatusEnum.NORMAL.name())), page);
     }
 
     @Override
-    public Mono<Item> changeStateById(Long id, StatusEnum statusEnum) {
+    public Mono<Item> changeStateById(String id, StatusEnum statusEnum) {
         return reactiveMongoTemplate.findAndModify(
                 Query.query(Criteria.where("_id").is(id)),
                 Update.update("state", statusEnum.name()),

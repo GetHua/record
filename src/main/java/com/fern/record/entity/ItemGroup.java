@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class ItemGroup {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 

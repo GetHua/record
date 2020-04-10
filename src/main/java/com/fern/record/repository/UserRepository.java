@@ -17,14 +17,14 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Repository
-public interface UserRepository extends ReactiveMongoRepository<User, Long>, CustomizedUserRepository {
+public interface UserRepository extends ReactiveMongoRepository<User, String>, CustomizedUserRepository {
 }
 
 interface CustomizedUserRepository{
 
     Mono<Page<User>> findByPage(PageRequest page);
 
-    Mono<User> changeStateById(Long id, StatusEnum statusEnum);
+    Mono<User> changeStateById(String id, StatusEnum statusEnum);
 
 }
 
@@ -46,7 +46,7 @@ class CustomizedUserRepositoryImpl implements CustomizedUserRepository {
     }
 
     @Override
-    public Mono<User> changeStateById(Long id, StatusEnum statusEnum) {
+    public Mono<User> changeStateById(String id, StatusEnum statusEnum) {
         return reactiveMongoTemplate.findAndModify(
                 Query.query(Criteria.where("_id").is(id)),
                 Update.update("state", statusEnum.name()),

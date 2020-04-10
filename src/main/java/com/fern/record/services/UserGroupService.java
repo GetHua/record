@@ -25,7 +25,7 @@ public class UserGroupService {
         );
     }
 
-    public Mono<UserGroup> findById(Long id) {
+    public Mono<UserGroup> findById(String id) {
         return Mono.just(id)
                 .flatMap(userGroupRepository::findById);
     }
@@ -40,11 +40,11 @@ public class UserGroupService {
                 });
     }
 
-    public Mono<UserGroup> deleteById(Long id) {
+    public Mono<UserGroup> deleteById(String id) {
         return changeStateById(id, StatusEnum.DELETED);
     }
 
-    private Mono<UserGroup> changeStateById(Long id, StatusEnum statusEnum) {
+    private Mono<UserGroup> changeStateById(String id, StatusEnum statusEnum) {
         return Mono.justOrEmpty(id)
                 .flatMap(itemId -> userGroupRepository.changeStateById(id, statusEnum));
     }

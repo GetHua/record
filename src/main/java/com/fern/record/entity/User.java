@@ -18,14 +18,14 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
-    private Long id;
+    private String id;
 
     private String username;
     private String nickname;
     private String headImg;
     private String password;
 
-    private Long groupId;
+    private String groupId;
 
     /**
      * @see com.fern.record.type.StatusEnum

@@ -27,7 +27,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Item> findById(@PathVariable Long id) {
+    public Mono<Item> findById(@PathVariable String id) {
         return itemService.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<Item> delete(@PathVariable Long id) {
+    public Mono<Item> delete(@PathVariable String id) {
         return itemService.deleteById(id);
     }
 }

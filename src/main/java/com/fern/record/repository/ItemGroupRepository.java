@@ -17,14 +17,14 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Repository
-public interface ItemGroupRepository extends ReactiveMongoRepository<ItemGroup, Long>, CustomizedItemGroupRepository {
+public interface ItemGroupRepository extends ReactiveMongoRepository<ItemGroup, String>, CustomizedItemGroupRepository {
 }
 
 interface CustomizedItemGroupRepository{
 
     Mono<Page<ItemGroup>> findByPage(PageRequest page);
 
-    Mono<ItemGroup> changeStateById(Long id, StatusEnum statusEnum);
+    Mono<ItemGroup> changeStateById(String id, StatusEnum statusEnum);
 }
 
 class CustomizedItemGroupRepositoryImpl implements CustomizedItemGroupRepository {
@@ -45,7 +45,7 @@ class CustomizedItemGroupRepositoryImpl implements CustomizedItemGroupRepository
     }
 
     @Override
-    public Mono<ItemGroup> changeStateById(Long id, StatusEnum statusEnum) {
+    public Mono<ItemGroup> changeStateById(String id, StatusEnum statusEnum) {
         return reactiveMongoTemplate.findAndModify(
                 Query.query(Criteria.where("_id").is(id)),
                 Update.update("state", statusEnum.name()),

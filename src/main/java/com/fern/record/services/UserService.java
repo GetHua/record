@@ -27,7 +27,7 @@ public class UserService {
         );
     }
 
-    public Mono<User> findById(Long id) {
+    public Mono<User> findById(String id) {
         return Mono.just(id)
                 .flatMap(userRepository::findById);
     }
@@ -42,11 +42,11 @@ public class UserService {
                 });
     }
 
-    public Mono<User> deleteById(Long id) {
+    public Mono<User> deleteById(String id) {
         return changeStateById(id, StatusEnum.DELETED);
     }
 
-    private Mono<User> changeStateById(Long id, StatusEnum statusEnum) {
+    private Mono<User> changeStateById(String id, StatusEnum statusEnum) {
         return Mono.justOrEmpty(id)
                 .flatMap(itemId -> userRepository.changeStateById(id, statusEnum));
     }

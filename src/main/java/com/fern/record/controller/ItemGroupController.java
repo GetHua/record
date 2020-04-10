@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/itemGroup")
 public class ItemGroupController {
 
     @Autowired
@@ -25,7 +27,7 @@ public class ItemGroupController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ItemGroup> findById(@PathVariable Long id) {
+    public Mono<ItemGroup> findById(@PathVariable String id) {
         return itemGroupService.findById(id);
     }
 
@@ -35,7 +37,7 @@ public class ItemGroupController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<ItemGroup> delete(@PathVariable Long id) {
+    public Mono<ItemGroup> delete(@PathVariable String id) {
         return itemGroupService.deleteById(id);
     }
 

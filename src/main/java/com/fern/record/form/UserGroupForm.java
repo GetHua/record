@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class UserGroupForm {
 
-    private Long id;
+    private String id;
 
     private String name;
 }

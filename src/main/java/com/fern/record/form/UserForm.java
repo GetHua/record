@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class UserForm {
 
-    private Long id;
+    private String id;
 
     private String username;
     private String nickname;
     private String headImg;
     private String password;
 
-    private Long groupId;
+    private String groupId;
 }

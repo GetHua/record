@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/playerRecord")
 public class PlayerRecordController {
 
     @Autowired
@@ -25,7 +27,7 @@ public class PlayerRecordController {
     }
 
     @GetMapping("/{id}")
-    public Mono<PlayerRecord> findById(@PathVariable Long id) {
+    public Mono<PlayerRecord> findById(@PathVariable String id) {
         return playerRecordService.findById(id);
     }
 
@@ -35,7 +37,7 @@ public class PlayerRecordController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<PlayerRecord> delete(@PathVariable Long id) {
+    public Mono<PlayerRecord> delete(@PathVariable String id) {
         return playerRecordService.deleteById(id);
     }
 

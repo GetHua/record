@@ -25,12 +25,13 @@ public class MongoPageAgent<T> {
         return this.reactiveMongoTemplate
                 .find(Query.of(query).with(pageable), this.entityClass)
                 .collectList()
-                .flatMap((r) -> this.reactiveMongoTemplate.count(query, this.entityClass)
+                .flatMap(r -> this.reactiveMongoTemplate.count(query, this.entityClass)
                                 .map((count) -> {
                                     log.info("findPageByQuery:[pageable:{},count:{}]", pageable, count);
                                     return new PageImpl(r, pageable, count);
                                 })
-                );
+                )
+                .map(page -> page);
     }
 
     public Mono<Page<T>> findPage(Pageable pageable) {

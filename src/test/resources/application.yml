@@ -1,0 +1,21 @@
+server:
+  port: 8085
+spring:
+  data:
+    mongodb:
+      database: record
+      auto-index-creation: true
+  output:
+    ansi:
+      enabled: always
+logging:
+  pattern:
+    console: '%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n'
+  level:
+    root: debug
+    org:
+      springframework:
+        data:
+          mongodb: debug
+app:
+  fieldA: a
